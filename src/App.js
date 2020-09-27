@@ -5,6 +5,7 @@ import './App.css';
 import InfoBox from './components/InfoBox';
 import Map from './components/Map'
 import Table from './components/Table'
+import LineGraph from './components/LineGraph'
 import { sortData } from './utils/utils';
 // import {sortData} from './utils/utils'
 
@@ -38,7 +39,7 @@ function App() {
         ))
         
         const sortedData = sortData(data)
-        console.log('hello babe',sortedData[0]);
+        // console.log('hello babe',sortedData[0]);
         setTableData(sortedData)
         setCountries(countries)
       })
@@ -101,10 +102,9 @@ function App() {
       <Card className="app_right">
         <CardContent>
           <h3> Live Cases by country</h3>
-          <Table countries={tableData} />
-          {/* table  */}
-        {/*  Graph */}
+          <Table countries={tableData} />         
           <h3>world wide New Content </h3>
+          <LineGraph />
 
         </CardContent>        
       </Card>
