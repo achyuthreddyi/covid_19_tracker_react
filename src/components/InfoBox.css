@@ -1,6 +1,7 @@
 .infoBox{
     flex: 1;
     border-radius: 15px;
+    cursor: progress;
 }
 
 .infoBox:not(:last-child){

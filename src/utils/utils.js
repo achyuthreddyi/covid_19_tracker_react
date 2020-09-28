@@ -13,19 +13,20 @@ const casesTypeColors = {
         multiplier:800,
 
     },
-    recovered:{
+    recovered :{
         hex:"#7dd71d",
         rgb:"rgb(125, 215, 29)",
         half_op:"rgba(125, 215, 29, 0.5)",
         multiplier:800,
     },
-    deaths:{
+    deaths :{
         hex:"#fb4443",
         rgb:"rgb(251, 68, 67)",
         half_op:"rgba(251, 68, 67, 0.5)",
         multiplier:800,
     }
 }
+
 
 export const sortData = (data) =>{
     const sortedData = [...data]

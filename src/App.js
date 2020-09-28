@@ -19,6 +19,7 @@ function App() {
   const [mapCenter, setMapCenter] = useState({ lat:34.80746, lng: -40.4796})
   const [mapZoom,setMapZoom] = useState(3)
   const [mapCountries, setMapCountries] = useState([])
+  const [casesTypes,setCasesTypes] = useState("cases")
 
   useEffect(() =>{
     fetch(`https://disease.sh/v3/covid-19/all`)
@@ -98,12 +99,28 @@ function App() {
         </div>  
       
         <div className = "app_stats"> 
-        <InfoBox title ="Corona Cases" cases = {countryInfo.todayCases} total = {countryInfo.cases}/>
-        <InfoBox title ="Recovered" cases = { countryInfo.todayRecovered} total = {countryInfo.recovered}/> 
-        <InfoBox title ="deaths" cases = { countryInfo.todayDeaths} total = {countryInfo.deaths}/> 
+        <InfoBox 
+        onClick = {e => setCasesTypes('cases')}
+        title ="Corona Cases" 
+        cases = {countryInfo.todayCases} 
+        total = {countryInfo.cases} 
+        />
+        <InfoBox 
+        onClick = {e => setCasesTypes('recovered')}
+        title ="Recovered" 
+        cases = { countryInfo.todayRecovered} 
+        total = {countryInfo.recovered}
+        /> 
+        <InfoBox 
+        onClick = {e => setCasesTypes('deaths')}
+        title ="deaths" 
+        cases = { countryInfo.todayDeaths} 
+        total = {countryInfo.deaths}
+        /> 
         </div>
         {/* Map  */}
         <Map 
+        caseTypes= {casesTypes}
         countries = {mapCountries}
         center = {mapCenter}
         zoom = {mapZoom}
