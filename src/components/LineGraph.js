@@ -48,6 +48,21 @@ const options = {
 
 }
 
+const casesTypeColor = {
+    cases : {
+        hex:"#CC1034",
+        half_op:"rgba(204, 16, 52, 0.5)"
+    },
+    recovered:{
+        hex:"#7dd71d",
+        half_op:"rgba(125, 215, 29, 0.5)",
+    },
+    deaths:{
+        hex:"#fb4443",
+        half_op:"rgba(251, 68, 67, 0.5)",
+    }
+}
+
 const buildChartData  = (data, caseType= 'cases') =>{
     const chartData = []
     let lastDataPoint 
@@ -65,7 +80,7 @@ const buildChartData  = (data, caseType= 'cases') =>{
     return chartData
 }
 
-function LineGraph({ caseType = 'cases'}) {
+function LineGraph({ caseType = 'cases'}, ...props ) {
     // https://disease.sh/v3/covid-19/historical/all?lastdays=120
     const [data,setData] = useState({})
 
@@ -74,7 +89,7 @@ function LineGraph({ caseType = 'cases'}) {
             await fetch('https://disease.sh/v3/covid-19/historical/all?lastdays=120')
             .then(response => response.json() )
             .then ( data =>{
-                let chartData = buildChartData(data, 'cases')
+                let chartData = buildChartData(data, caseType)
                 console.log(chartData);
                 setData(chartData)
             } )
@@ -83,8 +98,8 @@ function LineGraph({ caseType = 'cases'}) {
                
     },[caseType])
     return (
-        <div>
-            <h1> I am a graph</h1>
+        <div className={props.className}>
+            <h1 > {caseType} </h1>
             {/* data && data.length */}
             {data?.length> 0 &&(
                  <Line 
@@ -92,8 +107,8 @@ function LineGraph({ caseType = 'cases'}) {
                  data = {{
                      datasets : [
                          {  
-                             backgroundColor : "rgba(204, 16, 52, 0.5)",
-                             borderColor:"#CC1034",
+                             backgroundColor : casesTypeColor[caseType].hex,
+                             borderColor:casesTypeColor[caseType].half_op,
                              data: data
                          }]
                  }} 
