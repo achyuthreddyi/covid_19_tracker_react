@@ -82,13 +82,10 @@ function LineGraph({ caseType = 'cases'}) {
         fetchData()
                
     },[caseType])
-
-  
-
-
     return (
         <div>
             <h1> I am a graph</h1>
+            {/* data && data.length */}
             {data?.length> 0 &&(
                  <Line 
                  options  = { options }           
@@ -101,9 +98,7 @@ function LineGraph({ caseType = 'cases'}) {
                          }]
                  }} 
                  /> 
-
-            )}
-                    
+            )}          
             
         </div>
     )

@@ -3,7 +3,11 @@
 }
 
 body{
-  background-color: #f5f6fa;
+  background-color: black;
+  color:#006600;
+  background: #EB5757;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #000000, #EB5757);  
+  background: linear-gradient(to right, #000000, #EB5757);      
 }
 .app{
   display: flex;
@@ -12,6 +16,9 @@ body{
 }
 .app__left{
   flex: 0.9;
+}
+.app_right{
+  border-radius: 20px;
 }
 .app__header{
   display: flex;
@@ -24,6 +31,10 @@ body{
   align-items: center;
   justify-content: space-between;
 }
+.cardContent{
+  border-radius: 20px;
+}
+
 
 @media(max-width: 990px){
   .app{
